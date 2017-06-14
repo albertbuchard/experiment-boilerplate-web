@@ -1,6 +1,6 @@
 {
   "name": "experiment-boilerplate-web",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "Headache-free boilerplate for web experiment development using Experiment.js",
   "main": "index.js",
   "author": "Albert Buchard",
