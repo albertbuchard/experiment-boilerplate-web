@@ -17,7 +17,6 @@ import {
 } from './states/running'
 
 import {
-  drawTiles,
   addButton,
   disposeOfButtons,
 } from './functions/globalFunctions'
@@ -142,6 +141,7 @@ export default function MainScene(options = {}) {
       showModal: 'showModal',
       goToTutorial: 'goToTutorial',
       restartTutorial: 'restartTutorial',
+      goTo3D: 'goTo3D',
     },
   })
 
@@ -164,14 +164,16 @@ export default function MainScene(options = {}) {
       tutorial: 1,
     })
 
+    const eventButton3D = new EventData(R.get.events_goTo3D, stateManager.timeInMs)
+
     const width = 220
     const height = 40
     const widthOffset = width / 2
 
     const buttonOptionLevelOne = {
-      id: 'levelOne',
+      id: 'ThreeD',
       parent: GUI,
-      text: 'Level 1',
+      text: '3D Demo',
       marginAlignment: 'h: center, v: bottom',
       margin: {
         rightPixels: (width) + widthOffset,
@@ -184,6 +186,7 @@ export default function MainScene(options = {}) {
       fontName: '20pt Arial',
       baseOpacity: 0.8,
       hoverOpacity: 1,
+      clickEventData: eventButton3D,
     }
 
     const buttonOptionTutorialOne = _.extend(_.clone(buttonOptionLevelOne), {
@@ -197,7 +200,10 @@ export default function MainScene(options = {}) {
     })
 
 
-    return stateManager.promise('addButton', buttonOptionTutorialOne)
+    return Promise.all([
+      stateManager.promise('addButton', buttonOptionLevelOne),
+      stateManager.promise('addButton', buttonOptionTutorialOne),
+    ])
       .then((buttons) => {
         elements2D.levelButtons = buttons
         if (buttons.constructor === BABYLON.Rectangle2D) { buttons = [buttons] }
@@ -215,6 +221,8 @@ export default function MainScene(options = {}) {
       stateManager.setGlobal('currentTutorial', tutorial)
       stateManager.goToState(R.get.states_tutorial)
     })
+
+  stateManager.states.active.addEventFunctions(R.get.events_goTo3D, () => { taskObject.currentScene = 'threeD' })
 
   /* ======== State RUNNING ======== */
 

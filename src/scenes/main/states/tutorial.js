@@ -28,7 +28,8 @@ const disclaimer = {
 const trialInstruction = {
   title: { en: 'There is no small examples' },
   content: { en: `<h5>Time to act</h5>
-    Try clicking on the little adventurer !
+    Try clicking on the little adventurer !<br>
+    Check in your console the logs. 👍🏽
     <br>` },
 }
 const tutorials = {

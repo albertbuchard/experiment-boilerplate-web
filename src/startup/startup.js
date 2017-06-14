@@ -19,6 +19,7 @@ import { RessourceManager, TaskObject, Deferred, debuglog, preloadImages } from 
 // import { SmartForm } from 'experiment-boxes'
 
 import MainScene from '../scenes/main/MainScene'
+import ThreeDScene from '../scenes/threeD/ThreeDScene'
 
 window.taskObject = null
 window.calibrator = null
@@ -70,8 +71,10 @@ window.loadingPromise.then(() => {
     // You register the function defined in the scene/main/
     // which will be called by the taskobject after loading the assets
   taskObject.registerSceneGenerator(MainScene)
+  taskObject.registerSceneGenerator(ThreeDScene)
 
-  const sceneNames = ['loading', 'main']
+
+  const sceneNames = ['loading', 'main', 'threeD']
 
   /* --- ParamBox --- */
     /* list of tweakable variables for the paramBox */
