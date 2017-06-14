@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://www.github.com/albertbuchard/experiment-boilerplate-web"
+    "url": "https://github.com/albertbuchard/experiment-boilerplate-web"
   },
   "devDependencies": {
     "babel-cli": "^6.24.0",
