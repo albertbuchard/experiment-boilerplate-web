@@ -11,5 +11,4 @@
  * LICENSE Apache-2
  */
 
-module.exports = require('./lib/experiment.min')
- 
+module.exports = require('./lib/task.min')
